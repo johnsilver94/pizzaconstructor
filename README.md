@@ -4,8 +4,8 @@ Is a web site who allow to construct your own pizza and create group orders as a
 
 ## Contents
 ### 1.[Tools and Technologies](#tools-and-technologies)
-###   1.1.[Prototyping](#prototyping)
-###   1.2.Development
+###   1.1.[Prototyping Tools](#prototyping-tools)
+###   1.2.Development Tools
 ### 2.[Goals](#goals)
 ### 3.[User Interface](#user-interface)
 ###   3.1.[Fonts and Colors](#fonts-and-colors)
@@ -16,7 +16,7 @@ Is a web site who allow to construct your own pizza and create group orders as a
 
 ## Tools and Technologies
 For this project we decide to use newest technologies in prototyping and web developing.
-### Prototyping
+### Prototyping Tools
 Used application : 
 * [Adobe XD](https://www.adobe.com/uk/products/xd.html)
 * [Adobe Ilustrator](https://www.adobe.com/products/illustrator.html)
