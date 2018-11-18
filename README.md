@@ -40,7 +40,7 @@ Icons sets (glyphicon, font awesome):
 
 ### Place 1
 
-Hello, this is some text to fill in this, [here](#prototyping), is a link to the second place.
+Hello, this is some text to fill in this, [here](#1.1.prototyping), is a link to the second place.
 
 ### Place 2
 
