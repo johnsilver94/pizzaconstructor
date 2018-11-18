@@ -4,7 +4,7 @@ Is a web site who allow to construct your own pizza and create group orders as a
 
 ## Contents
 ### 1.Tools and Technologies
-###   [1.1.Prototyping](#1.1.prototyping)
+###   [1.1.Prototyping](#prototyping)
 ###   1.2.Development
 ### 2.Goals
 ### 3.User Interface
@@ -16,7 +16,7 @@ Is a web site who allow to construct your own pizza and create group orders as a
 
 
 ## 1.Tools and Technologies
-### 1.1.Prototyping
+### Prototyping
 Used application : [Adobe XD](https://www.adobe.com/uk/products/xd.html)
 * XD Plugins:
   * PhotoSplash
