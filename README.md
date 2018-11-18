@@ -20,8 +20,8 @@ Is a web site who allow to construct your own pizza and create group orders as a
 Used application : [Adobe XD](https://www.adobe.com/uk/products/xd.html)
 * XD Plugins:
   * PhotoSplash
-   * UI Faces
-   * Lorem Ipsum
+  * UI Faces
+  * Lorem Ipsum
 
 UI kits:
 * [Bootstrap ui](https://xdresources.co/resources/bootstrap-4-ui)
@@ -40,7 +40,7 @@ Icons sets (glyphicon, font awesome):
 
 ### Place 1
 
-Hello, this is some text to fill in this, [here](#place-2), is a link to the second place.
+Hello, this is some text to fill in this, [here](#prototyping), is a link to the second place.
 
 ### Place 2
 
