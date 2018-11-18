@@ -8,8 +8,9 @@ Is a web site who allow to construct your own pizza and create group orders as a
 ###   1.2.Development
 ### 2.[Goals](#goals)
 ### 3.[User Interface](#user-interface)
-###   3.1.[Design Message](#design-message)
-###   3.2.[Prototype](#prototype)
+###   3.1.[Fonts and Colors](#fonts-and-colors)
+###   3.2.[Design Message](#design-message)
+###   3.3.[Prototype](#prototype)
 ### 4.Functionality
 ###   4.1.Functional Description
 
@@ -42,8 +43,9 @@ Fonts:
 * [Google Fonts](https://fonts.google.com/)
  
 ## User Interface
+### Fonts and Colors
+#### Fonts: [Quicksand](https://fonts.google.com/specimen/Quicksand)
 ![Colors](/img/Colors.png)
-Fonts:[Quicksand](https://fonts.google.com/specimen/Quicksand)
 ### Design Message
 ### Prototype
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/).
