@@ -6,10 +6,10 @@ Is a web site who allow to construct your own pizza and create group orders as a
 ### 1.[Tools and Technologies](#tools-and-technologies)
 ###   1.1.[Prototyping](#prototyping)
 ###   1.2.Development
-### 2.Goals
-### 3.User Interface
-###   3.1.Design Message
-###   3.2.Prototype
+### 2.[Goals](#goals)
+### 3.[User Interface](#user-iterface)
+###   3.1.[Design Message](#design-message)
+###   3.2.[Prototype](#prototype)
 ### 4.Functionality
 ###   4.1.Functional Description
 
@@ -39,4 +39,7 @@ Icons sets (glyphicon, font awesome):
 * [Flaticon](https://www.flaticon.com/)
   * [Gastronomy Set](https://www.flaticon.com/packs/gastronomy-set)
   * [Allergenic Food](https://www.flaticon.com/packs/allergenic-food)
-  
+ 
+## User Interface
+### Design Message
+### Prototype
