@@ -14,6 +14,7 @@ Is a web site who allow to construct your own pizza and create group orders as a
 ###   4.1.Functional Description
 
 ## Tools and Technologies
+For this project we decide to use newest technologies in prototyping and web developing.
 ### Prototyping
 Used application : 
 * [Adobe XD](https://www.adobe.com/uk/products/xd.html)
@@ -36,8 +37,12 @@ Icons sets (glyphicon, font awesome):
 * [Flaticon](https://www.flaticon.com/)
   * [Gastronomy Set](https://www.flaticon.com/packs/gastronomy-set)
   * [Allergenic Food](https://www.flaticon.com/packs/allergenic-food)
+
+Fonts:
+* [Google Fonts](https://fonts.google.com/)
  
 ## User Interface
+https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png
 ### Design Message
 ### Prototype
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/).
