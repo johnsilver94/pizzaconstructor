@@ -3,7 +3,7 @@
 Is a web site who allow to construct your own pizza and create group orders as a registered user, newly constructed pizza recipe can be rated by other users. User can buy pizza using default pizza recipes, own created recipes or other food via web site also customer can track order delivery.
 
 ## Contents
-### 1.[Tools and Technologies](#Tools-and-Technologies)
+### 1.[Tools and Technologies](#tools-and-technologies)
 ###   1.1.[Prototyping](#prototyping)
 ###   1.2.Development
 ### 2.Goals
@@ -16,7 +16,7 @@ Is a web site who allow to construct your own pizza and create group orders as a
 
 
 ## 1.Tools and Technologies
-###   1.1.Prototyping(#prototyping)
+###   1.1.Prototyping
 Used application : [Adobe XD](https://www.adobe.com/uk/products/xd.html)
 * XD Plugins:
   * PhotoSplash
