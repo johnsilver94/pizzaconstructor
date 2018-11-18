@@ -42,7 +42,7 @@ Fonts:
 * [Google Fonts](https://fonts.google.com/)
  
 ## User Interface
-![test image size](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png)
+![Colors](/img/Colors.png)
 ### Design Message
 ### Prototype
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/).
