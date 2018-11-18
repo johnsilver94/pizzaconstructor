@@ -25,7 +25,7 @@ Adobe XD Plugins:
   * UI Faces
   * Lorem Ipsum
 
-UI kits:
+Adobe XD UI kits:
 * [Bootstrap ui](https://xdresources.co/resources/bootstrap-4-ui)
 * Web XD wireframe kit
 * Material Design kit
@@ -40,3 +40,6 @@ Icons sets (glyphicon, font awesome):
 ## User Interface
 ### Design Message
 ### Prototype
+Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/)
+Design Specifications: [PizzaCreator Design Specs](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/)
+
