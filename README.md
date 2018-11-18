@@ -41,5 +41,5 @@ Icons sets (glyphicon, font awesome):
 ### Design Message
 ### Prototype
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/)
-Design Specifications: [PizzaCreator Design Specs](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/)
+Design Specifications: [PizzaCreator Design Specs](https://xd.adobe.com/spec/9f58ae1c-3a68-40a5-7dd3-76b360c87d34-e969/)
 
