@@ -35,14 +35,3 @@ Icons sets (glyphicon, font awesome):
   * [Gastronomy Set](https://www.flaticon.com/packs/gastronomy-set)
   * [Allergenic Food](https://www.flaticon.com/packs/allergenic-food)
   
-  
-## Title
-
-### Place 1
-
-Hello, this is some text to fill in this, [here](#1.1.prototyping), is a link to the second place.
-
-### Place 2
-
-Place one has the fun times of linking here, but I can also link back [here](#place-1).
-
