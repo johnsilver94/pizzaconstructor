@@ -3,22 +3,16 @@
 Is a web site who allow to construct your own pizza and create group orders as a registered user, newly constructed pizza recipe can be rated by other users. User can buy pizza using default pizza recipes, own created recipes or other food via web site also customer can track order delivery.
 
 ## Contents
+### Purpose(#pizzaconstructor)
 ### 1.[Tools and Technologies](#tools-and-technologies)
 ###   1.1.[Prototyping](#prototyping)
 ###   1.2.Development
 ### 2.[Goals](#goals)
-### 3.[User Interface](#user-iterface)
+### 3.[User Interface](#user-interface)
 ###   3.1.[Design Message](#design-message)
 ###   3.2.[Prototype](#prototype)
 ### 4.Functionality
 ###   4.1.Functional Description
-
-
-
-
-
-
-
 
 ## Tools and Technologies
 ### Prototyping
