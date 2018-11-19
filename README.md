@@ -126,7 +126,7 @@ In application is used 3 main colors:
 Combination of Gray and white is the base of all application design, golden is used as a button color for succes buttons(Add to basket,Order,Save changes etc),r ed is used as a attention color(color for  food allergens).Gray and white combination are soothingly for user and golden is a succes color who push user to act, in our case to order a pizza or other food. 
 
 ### Navigation and Organization
-For fastest and confortable navigation is used a navbar with all important pages shortcuts.
+For fastest and confortable navigation is used a navbar with all important pages shortcuts. Navbar can have multiple states for register user, unregister user, group order user
 
 This site is organized on following pages:
 * Home
