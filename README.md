@@ -138,9 +138,11 @@ This site is organized on following pages:
   * Vegan
 * Promotions  
 * Pizza creation
+
 Items pages:
   * Pizza
   * Other Food/Drink
+  
 User Dropdown pages:
 * User page
   * My Profile
