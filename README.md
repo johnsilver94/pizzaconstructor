@@ -128,6 +128,8 @@ Combination of Gray and white is the base of all application design, golden is u
 
 ### Logo
 
+![Logo](/img/logo.png)
+
 ### Navigation and Organization
 For fastest and confortable navigation is used a navbar with all important pages shortcuts. Navbar can have multiple states for register user, unregister user, group order user
 
