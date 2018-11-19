@@ -3,17 +3,24 @@
 Is a web site who allow to construct your own pizza and create group orders as a registered user, newly constructed pizza recipe can be rated by other users. User can buy pizza using default pizza recipes, own created recipes or other food via web site also customer can track order delivery.
 
 ## Contents
-### 1.[Tools and Technologies](#tools-and-technologies)
-###   1.1.[Prototyping Tools](#prototyping-tools)
-###   1.2.Development Tools
-### 2.[Goals](#goals)
-### 3.[User Interface](#user-interface)
-###   3.1.[Fonts and Colors](#fonts-and-colors)
-###   3.2.[Design Message](#design-message)
-###   3.3.[Prototype](#prototype)
-### 4.Functionality
-###   4.1.Functional Description
+### 1.[Goals and Features](#goals-and-features)
+### 2.[Tools and Technologies](#tools-and-technologies)
+###   2.1.[Prototyping Tools](#prototyping-tools)
+###   2.2.[Development Technologies](#development-technologies)
+###   2.3.[Development Tools](#development-tools)
+### 3.[Functionality](#functionality)
+###   3.1.[Actors](#actors)
+###   3.2.[Functional Description](#functional-description)
+### 4.[User Interface](#user-interface)
+###   4.1.[Fonts and Colors](#fonts-and-colors)
+###   4.2.[Design Message](#design-message)
+###   4.3.[Navigation and Organization](#navigation-and-organization)
+###   4.4.[Prototype](#prototype)
+### 5.[Development](#development)
+###   5.1.BD Architecture
+###   5.2.Application Architecture
 
+## Goals and Features
 ## Tools and Technologies
 For this project we decide to use newest technologies in prototyping and web developing.
 ### Prototyping Tools
@@ -47,6 +54,7 @@ Fonts:
 #### Fonts: [Quicksand](https://fonts.google.com/specimen/Quicksand)
 ![Colors](/img/Colors.png)
 ### Design Message
+### Navigation and Organization
 ### Prototype
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/).
 
