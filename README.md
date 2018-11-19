@@ -1,6 +1,6 @@
 # PIZZAConstructor
 
-Is a web site who allow to construct your own pizza and create group orders as a registered user, newly constructed pizza recipe can be rated by other users. User can buy pizza using default pizza recipes, own created recipes or other food via web site also customer can track order delivery.
+PIZZAConstructor is a website who allow for register users to construct own pizza and create group orders with friends and colleagues, user can customize pizza recipe in multiple way choosing from multiple variants of dough,sauce and ingredients, also can select other items from menu as a suggested food for current recipe. User can send orders with newly created pizza or other items from site menu and can track current order from user orders tab.
 
 ## Contents
 ### 1.[Goals and Features](#goals-and-features)
@@ -21,8 +21,21 @@ Is a web site who allow to construct your own pizza and create group orders as a
 ###   5.2.Application Architecture
 
 ## Goals and Features
+
+#### Goals
+Main goals of this project are:
+* Gain new skills in web application development using new technologies
+* Create original design
+* Offers new features for pizzas/food delivery web sites
+#### Features
+This website has multiple features who increase convenince level of users, but most impotant and originals from all are:
+* Ability to construct own pizza from scratch or based on another pizza recipe
+* Group order creation and sharing with a non registered users
+
 ## Tools and Technologies
-For this project we decide to use newest technologies in prototyping and web developing.
+
+
+
 ### Prototyping Tools
 Used application : 
 * [Adobe XD](https://www.adobe.com/uk/products/xd.html)
@@ -48,13 +61,69 @@ Icons sets (glyphicon, font awesome):
 
 Fonts:
 * [Google Fonts](https://fonts.google.com/)
- 
+
+## Functionality
+In this section is described all  possible interactions with application and its actors.
+###  Actors
+Posible actors in interaction with web site:
+* Unregistered user
+* Registered user
+* Group order user(user who enter on site using group order link)
+
+### Capabilities
+Unregistered user can:
+* View following pages:
+  * Home
+  * Promotions
+  * All Menu dropdown pages
+  * All Items pages
+Registered user can:
+* View following pages:
+  * Home
+  * Promotions
+  * All Menu dropdown pages
+  * All Items pages
+  * Pizza page witch customize button 
+  * Pizza creation page
+  * Group order
+  * Group order creation page
+  * All user dropdown page
+  * Basket 
+* Modify following page:
+  * Basket
+  * Group order
+  * My Profile
+  * Pizza creation
+  
+Group order user can:
+* View following pages:
+  * Home
+  * Promotions
+  * All Menu dropdown pages
+  * All Items pages
+  * Group order
+  * Basket 
+* Modify following page:
+  * Basket
+
+###  Functional Description
+Unregistered user
+
+Registered user
+
+Group order user
+
 ## User Interface
+
 ### Fonts and Colors
+
 #### Fonts: [Quicksand](https://fonts.google.com/specimen/Quicksand)
+
 ![Colors](/img/Colors.png)
 ### Design Message
+
 ### Navigation and Organization
+
 ### Prototype
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/).
 
