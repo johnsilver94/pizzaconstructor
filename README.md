@@ -14,8 +14,9 @@ PIZZAConstructor is a website who allow for register users to construct own pizz
 ### 4.[User Interface](#user-interface)
 ###   4.1.[Fonts and Colors](#fonts-and-colors)
 ###   4.2.[Design Message](#design-message)
-###   4.3.[Navigation and Organization](#navigation-and-organization)
-###   4.4.[Prototype](#prototype)
+###   4.3.[Logo](#logo)
+###   4.4.[Navigation and Organization](#navigation-and-organization)
+###   4.5.[Prototype](#prototype)
 ### 5.[Development](#development)
 ###   5.1.BD Architecture
 ###   5.2.Application Architecture
@@ -124,6 +125,8 @@ In application is used 3 main colors:
 
 
 Combination of Gray and white is the base of all application design, golden is used as a button color for succes buttons(Add to basket,Order,Save changes etc),r ed is used as a attention color(color for  food allergens).Gray and white combination are soothingly for user and golden is a succes color who push user to act, in our case to order a pizza or other food. 
+
+### Logo
 
 ### Navigation and Organization
 For fastest and confortable navigation is used a navbar with all important pages shortcuts. Navbar can have multiple states for register user, unregister user, group order user
