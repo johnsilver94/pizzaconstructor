@@ -63,7 +63,7 @@ Fonts:
 * [Google Fonts](https://fonts.google.com/)
 
 ## Functionality
-In this section is described all  possible interactions with application and its actors.
+In this section is described what application can do an all possible interactions with application from all actors points of view based on its capabilities.
 ###  Actors
 Posible actors in interaction with web site:
 * Unregistered user
@@ -107,11 +107,7 @@ Group order user can:
   * Basket
 
 ###  Functional Description
-Unregistered user
 
-Registered user
-
-Group order user
 
 ## User Interface
 
@@ -121,8 +117,36 @@ Group order user
 
 ![Colors](/img/Colors.png)
 ### Design Message
+In application is used 3 main colors:
+* Gray and its shades
+* White
+* Golden
+
+
+Combination of Gray and white is the base of all application design, golden is used as a button color for succes buttons(Add to basket,Order,Save changes etc),r ed is used as a attention color(color for  food allergens).Gray and white combination are soothingly for user and golden is a succes color who push user to act, in our case to order a pizza or other food. 
 
 ### Navigation and Organization
+For fastest and confortable navigation is used a navbar with all important pages shortcuts.
+
+This site is organized on following pages:
+* Home
+* Menu
+  * Pizza
+  * Salad
+  * Desert
+  * Drinks
+  * Vegan
+* Promotions  
+* Pizza creation
+Items pages:
+  * Pizza
+  * Other Food/Drink
+User Dropdown pages:
+* User page
+  * My Profile
+  * My Orders
+  * My Recipes
+* Group Order
 
 ### Prototype
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/).
