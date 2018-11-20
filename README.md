@@ -109,6 +109,50 @@ Group order user can:
 
 ###  Functional Description
 
+#### Authorization
+##### Register
+- [ ] Registered
+
+1. Any accesible page 
+2. Click on Sign In button
+3. Click on Register button
+4. Enter personal data
+5. Wait for succes response
+
+##### Login
+- [x] Registered
+
+1. Any accesible page 
+2. Click on Sign In button
+4. Enter username and password
+5. Wait for succes response
+
+##### LogOut
+- [x] Registered
+
+1. Any accesible page 
+2. Click on user dropdown menu
+3. Click on Logout button
+
+#### Basket Interactions as a registered user
+##### Add item to Basket
+##### Delete item from Basket
+##### Clear Basket
+##### Send Order
+
+#### Group Order as a order admin
+##### Create Group Order
+##### Save Group Order
+##### Add User to Group Order
+##### Delete User from Group Order
+##### Add Items for user order(part of group order)
+##### Delete Items for user order(part of group order)
+
+#### Basket Interactions as a group order user
+##### Add item to Basket
+##### Delete item from Basket
+##### Clear Basket
+##### Add order to group order
 
 ## User Interface
 
