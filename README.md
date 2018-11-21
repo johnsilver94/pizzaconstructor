@@ -27,7 +27,7 @@ PIZZAConstructor is a website who allow for register users to construct own pizz
 Main goals of this project are:
 * Gain new skills in web application development using new technologies
 * Create original design
-* Offers new features for pizzas/food delivery web sites
+* Offers new features for pizzas/food delivery web site
 #### Features
 This website has multiple features who increase convenince level of users, but most impotant and originals from all are:
 * Ability to construct own pizza from scratch or based on another pizza recipe
@@ -191,16 +191,22 @@ Group order user can:
 #### Fonts: [Quicksand](https://fonts.google.com/specimen/Quicksand)
 
 ![Colors](/img/Colors.png)
+
 ### Design Message
-In application is used 3 main colors:
-* Gray and its shades
-* White
-* Golden
+Our brand is based on:
+* Logo
+* Main application features
+* 3 main colors used in design
+  * Gray and its shades
+  * White
+  * Golden
 
 
 Combination of Gray and white is the base of all application design, golden is used as a button color for succes buttons(Add to basket,Order,Save changes etc),r ed is used as a attention color(color for  food allergens).Gray and white combination are soothingly for user and golden is a succes color who push user to act, in our case to order a pizza or other food. 
 
 ### Logo
+
+Logo ilustrate using text and image one of the main feature of application - Ability to construct own pizza 
 
 ![Logo](/img/logo.png)
 
