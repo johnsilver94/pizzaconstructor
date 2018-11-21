@@ -129,6 +129,7 @@ Group order user can:
 
 ##### LogOut
 - [x] Registered
+- [x] Logged
 
 1. Any accesible page 
 2. Click on user dropdown menu
@@ -136,9 +137,38 @@ Group order user can:
 
 #### Basket Interactions as a registered user
 ##### Add item to Basket
+- [x] Registered
+- [x] Logged
+
+1. Any page with product items
+2. Click on 'Add to basket' button
+
 ##### Delete item from Basket
+- [x] Registered
+- [x] Logged
+- [x] Having items in Basket
+
+1. Any accesible page 
+2. Click on 'Basket' image/button
+3. Click on 'X'-delete button on selected item
+
 ##### Clear Basket
+- [x] Registered
+- [x] Logged
+- [x] Having items in Basket
+
+1. Any accesible page 
+2. Click on 'Basket' image/button
+3. Click on 'Clear' button
+
 ##### Send Order
+- [x] Registered
+- [x] Logged
+- [x] Having items in Basket
+
+1. Any accesible page 
+2. Click on 'Basket' image/button
+3. Click on 'Order' button
 
 #### Group Order as a order admin
 ##### Create Group Order
