@@ -282,7 +282,7 @@ Group order user can:
 
 #### Fonts: [Quicksand](https://fonts.google.com/specimen/Quicksand)
 
-![Colors](/img/Colors.png)
+![Colors](/_source/images/Colors.png)
 
 ### Design Message
 Our brand is based on:
@@ -300,7 +300,7 @@ Combination of Gray and white is the base of all application design, golden is u
 
 Logo ilustrate using text and image one of the main feature of application - Ability to construct own pizza 
 
-![Logo](/img/logo.png)
+![Logo](/_source/images/logo.png)
 
 ### Navigation and Organization
 For fastest and confortable navigation is used a navbar with all important pages shortcuts. Navbar can have multiple states for register user, unregister user, group order user
