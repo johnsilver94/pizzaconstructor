@@ -236,9 +236,9 @@ Group order user can:
 #### Basket Interactions as a group order user
 ##### Add item to Basket
 - [x] Registered
-- [] Registered
+- [ ] Registered
 - [x] Logged
-- [] Logged
+- [ ] Logged
 - [x] used valid Group Order link
 
 1. Any page with product items
@@ -246,9 +246,9 @@ Group order user can:
 
 ##### Delete item from Basket
 - [x] Registered
-- [] Registered
+- [ ] Registered
 - [x] Logged
-- [] Logged
+- [ ] Logged
 - [x] used valid Group Order link
 
 1. Any accesible page 
@@ -257,9 +257,9 @@ Group order user can:
 
 ##### Clear Basket
 - [x] Registered
-- [] Registered
+- [ ] Registered
 - [x] Logged
-- [] Logged
+- [ ] Logged
 - [x] used valid Group Order link
 
 1. Any accesible page 
@@ -267,9 +267,9 @@ Group order user can:
 3. Click on 'Clear' button
 ##### Add order to group order
 - [x] Registered
-- [] Registered
+- [ ] Registered
 - [x] Logged
-- [] Logged
+- [ ] Logged
 - [x] used valid Group Order link
 
 1. Any accesible page 
@@ -282,7 +282,7 @@ Group order user can:
 
 #### Fonts: [Quicksand](https://fonts.google.com/specimen/Quicksand)
 
-![Colors](/_source/images/Colors.png)
+![Colors](/_source/images/colors.png)
 
 ### Design Message
 Our brand is based on:
