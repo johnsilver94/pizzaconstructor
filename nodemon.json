@@ -1,0 +1,10 @@
+{
+  "ignore": ["node_modules", "dev", "public"],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": 3000,
+    "MONGO_URL": "mongodb://@ds026658.mlab.com:26658/pizzaconstructor"
+  },
+  "ext": ".js,.json",
+  "watch": "./"
+}

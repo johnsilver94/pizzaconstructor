@@ -1,0 +1,1 @@
+var a="as";"a"!=a&&global.console.log("error");
