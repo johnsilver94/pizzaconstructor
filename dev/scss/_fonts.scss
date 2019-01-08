@@ -1,0 +1,20 @@
+html {
+  font-family: 'Quicksand', 'sans-serif';
+  font-weight: normal;
+  line-height: normal;
+}
+
+.nav-link {
+  font-size: $navbarTextSize;
+  color: $bodyColor;
+}
+
+.dropdown-item {
+  font-size: $navbarTextSize;
+  color: $bodyColor;
+}
+
+.form-control::placeholder {
+  font-size: $navbarTextSize;
+  color: $searchColor;
+}

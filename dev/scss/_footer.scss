@@ -1,0 +1,14 @@
+footer {
+  background-color: $footerColor;
+  color: $navbarColor;
+  .container {
+    max-width: 1440px;
+  }
+  .copyright {
+    margin-top: 150px;
+    font-size: 10px;
+  }
+  .subscribe-form {
+    padding: 0px;
+  }
+}

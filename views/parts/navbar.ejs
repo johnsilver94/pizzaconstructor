@@ -1,0 +1,74 @@
+<body>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="<%= assetFingerprint('/img/logo.png') %>" alt="PIZZAConstructor"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="pages">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+          <div class="dropdown-menu" aria-labelledby="menu">
+            <a class="dropdown-item" href="#">Pizza</a>
+            <a class="dropdown-item" href="#">Salad</a>
+            <a class="dropdown-item" href="#">Desert</a>
+            <a class="dropdown-item" href="#">Beverages</a>
+            <a class="dropdown-item" href="#">Vegan</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Promotions</a>
+        </li>
+        <li>
+          <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search this site..." aria-label="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+        <i class="fas fa-search"></i>
+        </button>
+       </form>
+        </li>
+      </ul>
+
+      <% if(!user.id && !user.login) { %>
+      <ul class="nav navbar-nav pull-right">
+      <li>
+        <button type="button" class="btn btn-outline-light text-dark" data-toggle="modal" data-target="#signin">Sign In</button>
+      </li>
+      <li>
+        <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#signup">Sign Up</button>
+      </li>
+    </ul>
+    <% include ../parts/navbar/register.ejs %>
+    <% include ../parts/navbar/login.ejs %>
+    
+    <% } else { %>
+      <ul class="nav navbar-nav pull-right">
+      <%if (user.ingrouporder) { %>
+      <li><a href="/grouporder"><img src="<%= assetFingerprint('/img/icons/groupOrder.svg') %>" alt="Group Order"></a></li>
+      <% } %>
+      <li><a href="/create/pizza"><img src="<%= assetFingerprint('/img/icons/createPizza.svg') %>" alt="Create Pizza"></a></li>
+      <li><a href="#"><img src="<%= assetFingerprint('/img/icons/basket.svg') %>" alt="Basket"> <span class="badge" id="badge"></span> </a></li>
+      
+      
+      <li class="nav-item dropdown">
+                  <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="<%= user.avatar %>" class="avatar" alt="Avatar"> <span id="avatarName"><%= user.login %></span> <b class="caret"></b></a>
+        
+                  <ul class="dropdown-menu">
+          <li><a href="/user/profile" class="dropdown-item"><i class="fas fa-user"></i>My Profile</a></li>
+          <li><a href="/user/orders" class="dropdown-item"><i class="fas fa-briefcase"></i>My Orders</a></li>
+          <li><a href="/user/recipes" class="dropdown-item"><i class="fas fa-utensils"></i>My Recipes</a></li>
+          <li><a href="/grouporder" class="dropdown-item"><i class="fas fa-users"></i>Group Order</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li><a href="/api/auth/logout" class="dropdown-item"><i class="fas fa-power-off"></i> Logout</a></li>
+        </ul> 
+      </li>
+    </ul>
+    <% } %>
+    </div>
+  </div>
+</nav>           

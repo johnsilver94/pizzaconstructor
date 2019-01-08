@@ -1,0 +1,59 @@
+.modal-content {
+  border-radius: 0px;
+  p {
+    margin-left: 25px;
+    align-content: center;
+    &.error {
+      color: red;
+      border-color: red;
+    }
+  }
+  input {
+    &.error {
+      border-color: red;
+    }
+  }
+}
+
+.modal-header {
+  border-radius: 0px;
+  height: 100px;
+  background-color: $blueColor;
+  text-align: center;
+  h5 {
+    margin-top: 20px;
+    margin-left: 175px;
+    font-size: 20px;
+    color: $navbarColor;
+    .fas {
+      margin-right: 10px;
+    }
+  }
+  .close {
+    color: $navbarColor;
+    font-size: 3rem;
+  }
+}
+
+.modal-body {
+  background-color: $navbarColor;
+  color: $bodyColor;
+
+  label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.modal-footer {
+  background-color: $modalFooterColor;
+  border-radius: 0px;
+  .btn {
+    background-color: $goldColor;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .btn-primary {
+    border-color: $goldColor;
+  }
+}

@@ -8,7 +8,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 const config = require('./config');
-// const routes = require('./routes');
+const routes = require('./routes');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -63,6 +63,7 @@ app.use('/uploads', express.static(path.join(__dirname, config.DESTINATION)));
 app.use(express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 
 //Routes
+app.use('/api/auth', routes.auth);
 
 // //catch 404 and forward to error handler
 // app.use((req, res, next) => {
@@ -82,7 +83,22 @@ app.use(express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 // });
 
 //Getter
-app.get('/', (req, res) => res.render('pages/index'));
+// app.get('/', (req, res) => res.render('pages/index'));
+
+app.get('/', (req, res) => {
+  const id = req.session.userId;
+  const login = req.session.userLogin;
+  const ingrouporder = req.session.ingrouporder;
+  const avatar = req.session.avatar;
+  res.render('pages/index', {
+    user: {
+      id,
+      login,
+      ingrouporder,
+      avatar
+    }
+  });
+});
 
 app.listen(config.PORT, () =>
   console.log(`Example app listening on port ${config.PORT}!`)

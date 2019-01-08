@@ -1,0 +1,41 @@
+.form-inline {
+  padding: 0px 0px 0px 100px;
+}
+.navbar {
+  background: $navbarColor;
+
+  .container {
+    max-width: 1440px;
+    max-height: 60px;
+    .navbar-brand {
+      img {
+        height: 35px;
+      }
+    }
+    .collapse {
+      padding: 0px 0px 0px 10px;
+      .nav-item {
+        margin-top: 0px !important;
+        .nav-link {
+          color: $bodyColor;
+        }
+      }
+    }
+  }
+}
+.nav {
+  li {
+    margin-top: 5px;
+    padding: 0px 10px 0px 10px;
+    a {
+      img {
+        height: 35px;
+      }
+    }
+  }
+}
+.dropdown-item {
+  .fas {
+    margin-right: 5px;
+  }
+}

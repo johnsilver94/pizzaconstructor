@@ -1,0 +1,20 @@
+$navbarColor: #ffffff;
+$bodyColor: #626262;
+$bodyColorBackground: #eeeeee;
+$searchColor: #9b9b9b;
+$navbarTextSize: 16px;
+$blueColor: #56c0e0;
+$modalFooterColor: #9b9b9b;
+$goldColor: #fed070;
+$footerColor: #626262;
+
+@import 'fonts';
+@import 'navbar';
+@import 'navbar/modals';
+@import 'footer';
+@import 'carousel';
+
+body {
+  color: $navbarColor;
+  background-color: $bodyColorBackground;
+}
