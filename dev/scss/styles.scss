@@ -9,12 +9,16 @@ $goldColor: #fed070;
 $footerColor: #626262;
 
 @import 'fonts';
-@import 'navbar';
-@import 'navbar/modals';
-@import 'footer';
-@import 'carousel';
 
 body {
+  font-family: 'Quicksand', sans-serif;
   color: $navbarColor;
   background-color: $bodyColorBackground;
 }
+
+@import 'navbar';
+@import 'navbar/modals';
+@import 'basket';
+@import 'footer';
+@import 'carousel';
+@import 'content';

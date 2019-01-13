@@ -63,40 +63,25 @@ app.use('/uploads', express.static(path.join(__dirname, config.DESTINATION)));
 app.use(express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 
 //Routes
+// app.use('/', routes.home);
+app.use('/', routes.home);
+app.use('/menu', routes.menu);
 app.use('/api/auth', routes.auth);
 
-// //catch 404 and forward to error handler
-// app.use((req, res, next) => {
-//   const err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-// //error handler
-// // eslint-disable-next-line no-unused-vars
-// app.use((error, req, res, next) => {
-//   res.status(error.status || 500);
-//   res.render('error', {
-//     message: error.message,
-//     error: !config.IS_PRODUCTION ? error : {}
-//   });
-// });
-
-//Getter
-// app.get('/', (req, res) => res.render('pages/index'));
-
-app.get('/', (req, res) => {
-  const id = req.session.userId;
-  const login = req.session.userLogin;
-  const ingrouporder = req.session.ingrouporder;
-  const avatar = req.session.avatar;
-  res.render('pages/index', {
-    user: {
-      id,
-      login,
-      ingrouporder,
-      avatar
-    }
+// error handler
+// eslint-disable-next-line no-unused-vars
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.render('error', {
+    message: error.message,
+    error: !config.IS_PRODUCTION ? error : {}
   });
 });
 

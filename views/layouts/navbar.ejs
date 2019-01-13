@@ -1,5 +1,5 @@
 <body>
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar fixed-top navbar-expand-lg ">
   <div class="container">
     <a class="navbar-brand" href="#"><img src="<%= assetFingerprint('/img/logo.png') %>" alt="PIZZAConstructor"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,11 +14,11 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
           <div class="dropdown-menu" aria-labelledby="menu">
-            <a class="dropdown-item" href="#">Pizza</a>
-            <a class="dropdown-item" href="#">Salad</a>
-            <a class="dropdown-item" href="#">Desert</a>
-            <a class="dropdown-item" href="#">Beverages</a>
-            <a class="dropdown-item" href="#">Vegan</a>
+            <a class="dropdown-item" href="/menu">Pizza</a>
+            <a class="dropdown-item" href="/menu">Salad</a>
+            <a class="dropdown-item" href="/menu">Desert</a>
+            <a class="dropdown-item" href="/menu">Beverages</a>
+            <a class="dropdown-item" href="/menu">Vegan</a>
           </div>
         </li>
         <li class="nav-item">
@@ -30,7 +30,7 @@
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">
         <i class="fas fa-search"></i>
         </button>
-       </form>
+       </form>                       
         </li>
       </ul>
 
@@ -43,16 +43,13 @@
         <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#signup">Sign Up</button>
       </li>
     </ul>
-    <% include ../parts/navbar/register.ejs %>
-    <% include ../parts/navbar/login.ejs %>
-    
     <% } else { %>
       <ul class="nav navbar-nav pull-right">
       <%if (user.ingrouporder) { %>
       <li><a href="/grouporder"><img src="<%= assetFingerprint('/img/icons/groupOrder.svg') %>" alt="Group Order"></a></li>
       <% } %>
       <li><a href="/create/pizza"><img src="<%= assetFingerprint('/img/icons/createPizza.svg') %>" alt="Create Pizza"></a></li>
-      <li><a href="#"><img src="<%= assetFingerprint('/img/icons/basket.svg') %>" alt="Basket"> <span class="badge" id="badge"></span> </a></li>
+      <li><a href="#" data-toggle="modal" data-target="#basket"><img src="<%= assetFingerprint('/img/icons/basket.svg') %>" alt="Basket"> <span class="badge badge-danger" id="badge-basket">3</span> </a></li>
       
       
       <li class="nav-item dropdown">
@@ -71,4 +68,10 @@
     <% } %>
     </div>
   </div>
-</nav>           
+</nav>      
+<% if(!user.id && !user.login) { %>
+<% include ../layouts/navbar_layouts/register.ejs %>
+<% include ../layouts/navbar_layouts/login.ejs %>     
+<% } else { %>
+<% include ../layouts/navbar_layouts/basket.ejs %>
+<% } %>

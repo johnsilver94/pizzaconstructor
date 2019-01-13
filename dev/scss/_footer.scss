@@ -1,14 +1,81 @@
 footer {
-  background-color: $footerColor;
-  color: $navbarColor;
-  .container {
-    max-width: 1440px;
+  margin-top: 50px;
+  height: 260px;
+  width: auto;
+  display: grid;
+  background-color: #626262;
+  padding: 50px;
+  grid-template-columns: 1fr repeat(3, 3fr) 2fr;
+  grid-template-rows: 1fr;
+  grid-gap: auto;
+  color: #ffffff;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  .address {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    font-size: 14px;
+    p i {
+      margin: 2px 10px;
+      font-size: 20px;
+    }
   }
-  .copyright {
-    margin-top: 150px;
-    font-size: 10px;
+  .subscribe {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    .social {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      i {
+        cursor: pointer;
+        font-size: 26px;
+        margin: 0 10px;
+      }
+    }
+    form {
+      input[type='email'] {
+        background-color: inherit;
+        border: 1px solid #56c0e0;
+        border-radius: 5px;
+        padding: 10px;
+        &::placeholder {
+          color: #ffffff;
+        }
+      }
+      .btn-subscribe {
+        font-size: 10px;
+        padding: 13px 20px;
+      }
+    }
   }
-  .subscribe-form {
-    padding: 0px;
+  button {
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #56c0e0;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0px 5px;
+    border: none;
+  }
+  .up {
+    display: grid;
+    grid-template-columns: 100px;
+    grid-template-rows: repeat(2, 1fr);
+    button {
+      width: 80px;
+      height: 80px;
+    }
+    p {
+      justify-self: end;
+      align-self: end;
+      font-size: 10px;
+    }
   }
 }

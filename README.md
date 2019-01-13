@@ -34,9 +34,9 @@ PIZZAConstructor is a website who allow for register users to construct own pizz
 
 ### 5.[Development](#development)
 
-### 5.1.BD Architecture
+### 5.1.[BD Architecture](#bd-architecture)
 
-### 5.2.Application Architecture
+### 5.2.[Application Architecture](#application-architecture)
 
 ## Goals and Features
 
@@ -56,24 +56,6 @@ This website has multiple features who increase convenince level of users, but m
 - Group order creation and sharing with a non registered users
 
 ## Tools and Technologies
-
-### Tools
-
-- VisualStudioCode
-
-#### Plugins
-
-- Gulp
-- EsLint
--
-
-### Technologies
-
-- NodeJS
-- SCSS
-- EJB
-- MongoDB (Mongoose)
-
 ### Prototyping Tools
 
 Used application :
@@ -105,6 +87,39 @@ Icons sets (glyphicon, font awesome):
 Fonts:
 
 - [Google Fonts](https://fonts.google.com/)
+### Development Technologies
+- Runtime: NodeJS
+- Framework: Express
+- Database: MongoDB
+
+Languages and Preprocessors:
+- Html 5
+- jQuery
+- SASS(CSS)
+### Development Tools
+#### Tools
+
+- VisualStudioCode
+- Google Chrome
+
+##### Plugins
+
+- Gulp
+- EsLint
+- Nodemon
+- Mongoose
+- bcrypt-nodejs
+- bootstrap
+- connect-mongo
+- dotenv
+- express-session
+- faker
+- mkdirp
+- moment
+- mongoose-autopopulate
+- mongoose-url-slugs
+
+For all list see <b>package.json</b> file
 
 ## Functionality
 
@@ -410,3 +425,22 @@ User Dropdown pages:
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/).
 
 Design Specifications: [PizzaCreator Design Specs](https://xd.adobe.com/spec/9f58ae1c-3a68-40a5-7dd3-76b360c87d34-e969/).
+### Development
+#### Menu Page Parts
+##### Bootstrap parts 
+- [Navbar](https://getbootstrap.com/docs/4.0/components/navbar/).
+- [Carousel](https://getbootstrap.com/docs/4.0/components/carousel/).
+- [Modals](https://getbootstrap.com/docs/4.0/components/modal/)
+##### CSS grid parts
+- [Footer](https://codepen.io/silverfang94/pen/pqxLEE).
+- [Page Content](https://codepen.io/silverfang94/pen/WLYrBy).
+    - [Menu](https://codepen.io/silverfang94/pen/LMJMPP).
+    - [Products](https://codepen.io/silverfang94/pen/MZqQEy).
+        - [Pizza Tile](https://codepen.io/silverfang94/pen/OrrbLg).
+    - [Sugested Sidebar](https://codepen.io/silverfang94/pen/GPPNoW).
+        - [Sugested Tile](https://codepen.io/silverfang94/pen/Ydjggw).
+### BD Architecture
+![BD_Schema](/_source/images/pizzaconstructorBD.png)
+### Application Architecture
+![App_Schema](/_source/images/pizzaconstructorApplication.png)
+

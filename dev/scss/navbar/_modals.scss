@@ -1,3 +1,7 @@
+.modal-xl {
+  max-width: 800px;
+}
+
 .modal-content {
   border-radius: 0px;
   p {
@@ -54,6 +58,37 @@
     font-weight: bold;
   }
   .btn-primary {
+    margin-top: 0px;
     border-color: $goldColor;
+  }
+}
+
+.basket {
+  .modal-header {
+    height: 120px;
+    h5 {
+      margin-top: 30px;
+      margin-left: 250px;
+      font-size: 25px;
+      color: $navbarColor;
+      .fas {
+        margin-right: 15px;
+      }
+    }
+    .close {
+      color: $navbarColor;
+      font-size: 4.5rem;
+    }
+  }
+  .modal-footer {
+    background-color: $modalFooterColor;
+    border-radius: 0px;
+    .btn-light {
+      margin-top: 0px;
+      background-color: $navbarColor;
+      font-size: 14px;
+      font-weight: normal;
+      border-color: $navbarColor;
+    }
   }
 }
