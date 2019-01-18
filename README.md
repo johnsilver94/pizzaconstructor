@@ -56,6 +56,7 @@ This website has multiple features who increase convenince level of users, but m
 - Group order creation and sharing with a non registered users
 
 ## Tools and Technologies
+
 ### Prototyping Tools
 
 Used application :
@@ -87,16 +88,21 @@ Icons sets (glyphicon, font awesome):
 Fonts:
 
 - [Google Fonts](https://fonts.google.com/)
+
 ### Development Technologies
+
 - Runtime: NodeJS
 - Framework: Express
 - Database: MongoDB
 
 Languages and Preprocessors:
+
 - Html 5
 - jQuery
 - SASS(CSS)
+
 ### Development Tools
+
 #### Tools
 
 - VisualStudioCode
@@ -425,22 +431,42 @@ User Dropdown pages:
 Online Prototype: [PizzaCreator Prototype](https://xd.adobe.com/view/9d21c28e-baea-4c80-7d17-81db8c936b0f-eb10/).
 
 Design Specifications: [PizzaCreator Design Specs](https://xd.adobe.com/spec/9f58ae1c-3a68-40a5-7dd3-76b360c87d34-e969/).
+
 ### Development
+
+#### How to
+
+- [Nodemon](https://github.com/remy/nodemon#nodemon).
+- [ESLint](https://www.npmjs.com/package/eslint-plugin-node).
+- [Model](https://mongoosejs.com/docs/guide.html).
+- [Faker](https://www.npmjs.com/package/Faker).(See mocks.js file)
+- [Routers](https://expressjs.com/en/starter/hello-world.html).
+- [EJS](https://ejs.co/#docs).
+- [Gulp 4](https://gist.github.com/jeromecoupe/0b807b0c1050647eb340360902c3203a).
+- [SASS](https://sass-lang.com/documentation/file.SASS_REFERENCE.html).
+
 #### Menu Page Parts
-##### Bootstrap parts 
+
+##### Bootstrap parts
+
 - [Navbar](https://getbootstrap.com/docs/4.0/components/navbar/).
 - [Carousel](https://getbootstrap.com/docs/4.0/components/carousel/).
 - [Modals](https://getbootstrap.com/docs/4.0/components/modal/)
+
 ##### CSS grid parts
+
 - [Footer](https://codepen.io/silverfang94/pen/pqxLEE).
 - [Page Content](https://codepen.io/silverfang94/pen/WLYrBy).
-    - [Menu](https://codepen.io/silverfang94/pen/LMJMPP).
-    - [Products](https://codepen.io/silverfang94/pen/MZqQEy).
-        - [Pizza Tile](https://codepen.io/silverfang94/pen/OrrbLg).
-    - [Sugested Sidebar](https://codepen.io/silverfang94/pen/GPPNoW).
-        - [Sugested Tile](https://codepen.io/silverfang94/pen/Ydjggw).
-### BD Architecture
-![BD_Schema](/_source/images/pizzaconstructorBD.png)
-### Application Architecture
-![App_Schema](/_source/images/pizzaconstructorApplication.png)
+  - [Menu](https://codepen.io/silverfang94/pen/LMJMPP).
+  - [Products](https://codepen.io/silverfang94/pen/MZqQEy).
+    - [Pizza Tile](https://codepen.io/silverfang94/pen/OrrbLg).
+  - [Sugested Sidebar](https://codepen.io/silverfang94/pen/GPPNoW).
+    - [Sugested Tile](https://codepen.io/silverfang94/pen/Ydjggw).
 
+### BD Architecture
+
+![BD_Schema](/_source/images/pizzaconstructorBD.png)
+
+### Application Architecture
+
+![App_Schema](/_source/images/pizzaconstructorApplication.png)

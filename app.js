@@ -10,6 +10,8 @@ const MongoStore = require('connect-mongo')(session);
 const config = require('./config');
 const routes = require('./routes');
 const mongoose = require('mongoose');
+//Data Generations
+// const mocks = require('./mocks');
 
 mongoose.Promise = global.Promise;
 mongoose.set('debug', config.IS_PRODUCTION);
@@ -22,6 +24,7 @@ mongoose.connection
   .once('open', () => {
     const info = mongoose.connections[0];
     console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
+    // mocks();
   });
 
 mongoose.connect(

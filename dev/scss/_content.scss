@@ -156,39 +156,44 @@
           justify-self: start;
         }
         .size {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: auto;
           margin-top: -10px;
           div {
             justify-self: center;
-            display: inline-block;
-          }
-          input[type='radio'] {
-            display: none;
-            + label span {
-              display: grid;
-              opacity: 0.8;
-              width: 80px;
-              height: 80px;
-              margin: -1px 4px 0 0;
-              vertical-align: middle;
-              cursor: pointer;
-              border-radius: 50%;
-              border: 1px solid #626262;
-              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-              background-color: #ffffff;
-              background-repeat: no-repeat;
-              background-position: center;
-              text-align: center;
-              font-size: 16px;
-              font-weight: bold;
-              i {
-                display: none;
+            input[type='radio'] {
+              display: none;
+              + label {
+                display: grid;
+                opacity: 0.8;
+                width: 80px;
+                height: 80px;
+                margin: -1px 4px 0 0;
+                vertical-align: middle;
+                cursor: pointer;
+                border-radius: 50%;
+                border: 1px solid #626262;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+                background-color: #ffffff;
+                background-repeat: no-repeat;
+                background-position: center;
+                text-align: center;
+                font-size: 16px;
+                font-weight: bold;
+                p {
+                  margin-top: 10px;
+                }
+                i {
+                  display: none;
+                }
               }
-            }
-            &:checked + label span {
-              border: none;
-              background: #fed070;
-              opacity: 0.8;
-              color: white;
+              &:checked + label {
+                border: none;
+                background: #fed070;
+                opacity: 0.8;
+                color: white;
+              }
             }
           }
         }
