@@ -48,6 +48,7 @@
         "@pizzaconstructor/theme": "workspace:*",
         "@sinclair/typebox": "0.32.34",
         "elysia": "1.1.24",
+        "mongoose": "^8.12.1",
       },
       "devDependencies": {
         "@pizzaconstructor/eslint-config": "workspace:*",
