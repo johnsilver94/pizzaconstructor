@@ -25,6 +25,8 @@ import { IngredientCard } from "@/components/constructor/IngredientCard";
 import { LiveSummaryPanel } from "@/components/constructor/LiveSummaryPanel";
 import { api } from "@/lib/eden";
 
+import { useCartStore } from "@/store/useCartStore";
+
 const FALLBACK_INGREDIENTS: Ingredient[] = [
   // Sauces
   { id: "sauce-tomato", name: "San Marzano Tomato Sauce", category: "sauce", price: 1.5, weightG: 80, caloriesKcal: 45, allergens: [], icon: "🍅" },
@@ -112,12 +114,15 @@ export default function ConstructorPage() {
     }
   };
 
+  const addCustomPizzaItem = useCartStore((state) => state.addCustomPizzaItem);
+
   const handleAddToCart = () => {
-    console.log("Adding customized pizza to cart:", {
-      name: recipeName,
-      metrics,
+    addCustomPizzaItem(recipeName, {
+      size,
+      dough,
       sauces,
       toppings,
+      metrics,
     });
   };
 

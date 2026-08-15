@@ -7,6 +7,8 @@ import { Plus, Minus, ShoppingBag, Sparkles, Check } from "lucide-react";
 import { Button } from "@pizzaconstructor/ui";
 import type { Product, SizePriceOption } from "@pizzaconstructor/shared";
 
+import { useCartStore } from "@/store/useCartStore";
+
 interface ProductCardProps {
   product: Product;
   onAddToCart?: (product: Product, selectedSize: SizePriceOption, quantity: number) => void;
@@ -18,6 +20,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   onAddToCart,
 }) => {
+  const addCatalogItem = useCartStore((state) => state.addCatalogItem);
   const sizes = product.sizePrices && product.sizePrices.length > 0
     ? product.sizePrices
     : [DEFAULT_OPTION];
@@ -34,6 +37,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     e.preventDefault();
     if (onAddToCart) {
       onAddToCart(product, selectedOption, quantity);
+    } else {
+      addCatalogItem(product, selectedOption, quantity);
     }
     setAddedAnimation(true);
     setTimeout(() => setAddedAnimation(false), 1500);

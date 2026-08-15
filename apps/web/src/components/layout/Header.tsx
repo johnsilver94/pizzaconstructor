@@ -5,11 +5,15 @@ import Link from "next/link";
 import { Navbar } from "./Navbar";
 import { ShoppingBag, Pizza } from "lucide-react";
 import { api } from "@/lib/eden";
+import { useCartStore } from "@/store/useCartStore";
 
 export const Header: React.FC = () => {
   const [apiOnline, setApiOnline] = React.useState<boolean | null>(null);
+  const [mounted, setMounted] = React.useState(false);
+  const { items, openDrawer } = useCartStore();
 
   React.useEffect(() => {
+    setMounted(true);
     let isMounted = true;
     api.health.index
       .get()
@@ -27,8 +31,10 @@ export const Header: React.FC = () => {
     };
   }, []);
 
+  const totalItemCount = mounted ? items.reduce((sum, item) => sum + item.quantity, 0) : 0;
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#34495e]/60 bg-[#0f171e]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-[#34495e]/60 bg-[#0f171e]/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand / Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
@@ -57,18 +63,19 @@ export const Header: React.FC = () => {
         {/* Navigation */}
         <Navbar />
 
-        {/* Quick Actions / Cart */}
+        {/* Quick Actions / Cart Drawer Trigger */}
         <div className="flex items-center space-x-3">
-          <Link
-            href="/cart"
-            className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-[#1a252f] hover:bg-[#2c3e50] text-[#ecf0f1] border border-[#34495e] transition-all"
+          <button
+            type="button"
+            onClick={openDrawer}
+            className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-[#1a252f] hover:bg-[#2c3e50] text-[#ecf0f1] border border-[#34495e] hover:border-[#f39c12]/50 transition-all cursor-pointer shadow-md"
           >
             <ShoppingBag className="w-4 h-4 text-[#f39c12]" />
-            <span className="text-sm font-semibold">Cart</span>
-            <span className="text-xs bg-[#f39c12] text-[#0f171e] font-bold px-1.5 py-0.2 rounded-full">
-              0
+            <span className="text-sm font-bold">Basket</span>
+            <span className="text-xs bg-[#f39c12] text-[#0f171e] font-extrabold px-2 py-0.5 rounded-full">
+              {totalItemCount}
             </span>
-          </Link>
+          </button>
         </div>
       </div>
     </header>
