@@ -1,8 +1,8 @@
-# PizzaConstructor — AI Developer Guidelines & Project Knowledge (AGENTS.md)
+# PizzaConstructor — AI Developer Guidelines & Operating Contract (AGENTS.md)
 
 Welcome to **PizzaConstructor**, a web application that enables users to visually construct custom pizza recipes and organize collaborative group orders with friends and colleagues.
 
-This document serves as the persistent memory and operational guideline for AI coding assistants and developers collaborating on the modernization of this repository.
+This document serves as the repository-wide operating contract and persistent memory for AI coding assistants and developers. More specific `AGENTS.md` or rule files may add localized guidelines, but must not weaken the safety, review, or workflow protocols defined here.
 
 ---
 
@@ -31,10 +31,10 @@ The primary goal of PizzaConstructor is to provide an intuitive, delightful food
 ## 2. Codebase Evolution: Legacy vs. Modernization
 
 ### 2.1 Legacy Architecture (Reference Only)
-The current codebase in this repository is a legacy Node.js prototype:
-- **Runtime**: Node.js (v8 era) / Express 4
+The current codebase in this repository is a Node.js prototype:
+- **Runtime**: Node.js / Express
 - **Templating & Frontend**: EJS, jQuery, Bootstrap 4, Gulp, SCSS
-- **Database**: MongoDB with Mongoose 5 (`models/product.js`, `models/user.js`)
+- **Database**: MongoDB with Mongoose (`models/product.js`, `models/user.js`)
 - **Assets**: Gulp pipeline (`gulpfile.js`, `_source/`, `dev/`)
 
 > [!NOTE]
@@ -45,35 +45,101 @@ Modernization targets a state-of-the-art, high-performance, type-safe stack:
 - **Language**: TypeScript (strict mode)
 - **Frontend Framework**: Next.js (App Router) or Vite + React
 - **Styling & UI**: Modern CSS / TailwindCSS / Radix UI / Shadcn / Framer Motion for smooth micro-animations and interactive pizza builder
-- **State Management & Data Fetching**: Zustand / Redux Toolkit / TanStack Query (React Query)
+- **State Management & Data Fetching**: Zustand / TanStack Query (React Query)
 - **Real-time / Group Orders**: WebSockets / Server-Sent Events (SSE) or Supabase Realtime / Liveblocks
-- **Backend / API**: Next.js Route Handlers / Server Actions / tRPC or modern Express/Fastify/NestJS TypeScript backend
-- **Database / ORM**: PostgreSQL / MongoDB with Prisma or Drizzle ORM / Mongoose 8+
+- **Backend / API**: Next.js Route Handlers / Server Actions / tRPC or modern Express/Fastify TypeScript backend
+- **Database / ORM**: MongoDB / PostgreSQL with Prisma, Drizzle ORM, or Mongoose 8+
 - **Testing**: Vitest / Jest, Playwright / Cypress for end-to-end user flows
 
 ---
 
-## 3. Engineering & Development Guidelines
+## 3. Instruction Priority
 
-### 3.1 Code Style & Conventions
-- **TypeScript First**: All new code must be strictly typed. Avoid `any`; use well-defined interfaces and zod schemas for validation.
-- **Component Architecture**: Atomic, modular, and accessible (WAI-ARIA compliant). Keep business logic in custom hooks and state stores, separating UI presentation from data fetching.
-- **Design & Aesthetics**:
-  - Deliver visually impressive, polished, responsive UI (desktop & mobile first).
-  - Use high-contrast, accessible palettes (Golden accent `#f39c12` / `#e67e22`, Dark slate `#2c3e50`, Warm neutrals).
-  - Smooth interactive transitions for pizza topping placement and live pricing updates.
-- **Documentation**: Provide clear comments for non-trivial domain logic (e.g., pricing formulas, allergen conflict detection, group order locking mechanisms).
+1. Follow explicit system and user instructions.
+2. Follow this root `AGENTS.md` guide.
+3. Follow the nearest scoped `AGENTS.md` or `.agents/rules/` for files being changed.
+4. Follow the linked work item's acceptance criteria and documented architecture decisions.
 
-### 3.2 Safety & Verification
-- Prioritize incremental, testable milestones.
-- Ensure every feature has automated tests (unit tests for calculation logic, integration tests for API endpoints/flows).
-- Validate environment variables with strict schemas (e.g., Zod env validation).
+When instructions conflict or required access is missing, stop and report the conflict instead of silently bypassing it.
 
 ---
 
-## 4. Workflows for AI Assistant
+## 4. Required Work-Item & Development Workflow
 
-When working on tasks in this repository:
-1. **Explore & Reference**: Review legacy business logic in `routes/`, `models/`, and `README.md` to preserve essential domain behaviors during migration.
-2. **Modular Plan**: Present clear multi-step plans before making major architectural changes.
-3. **Verify**: Test functionality and maintain clean commits and documentation.
+Apply this strict workflow to every implementation task in this repository:
+
+### Step 1: Work Item Creation & Organization (ZenHub)
+1. **Search First**: Before changing code, use the ZenHub MCP to search for existing work items to prevent duplicates.
+2. **Quality Work Items with Effort**: If creating new work items, write detailed, high-effort descriptions including:
+   - **Context & Goal**
+   - **Detailed Scope of Changes**
+   - **Acceptance Criteria (Checklist)**
+   - **Verification / Testing Steps**
+   - **Dependencies / Technical Notes**
+3. **Epics Organization**: Group related tasks under Epics when tackling multi-part features (e.g., Epic: Interactive Pizza Constructor, Epic: Collaborative Group Orders).
+4. **Assign & Move**: Assign the work item to the authenticated user (`johnsilver94`) and move it to **In Progress** in ZenHub before making any file changes.
+
+### Step 2: Remote Branch Creation
+1. Update remote refs (`git fetch origin`).
+2. Create the branch on GitHub first (or create and push tracking branch immediately from the latest `origin/dev`, which is the canonical base).
+3. Branch naming convention: `feat/issue-<number>-<slug>` or `fix/issue-<number>-<slug>`.
+4. Check out the branch locally to begin development.
+
+### Step 3: Scoped Implementation & Local Validation
+1. Implement only the linked scope. Do not disturb unrelated files or untracked changes.
+2. Run focused validation and automated tests while working.
+3. For UI changes, verify desktop and mobile responsive states.
+
+### Step 4: User Commit Review & Approval (Mandatory)
+1. **Inspect Staged Diff**: Inspect `git status` and staged diffs. Ensure no unrelated files, credentials, or build artifacts are included.
+2. **Request Confirmation**: Before executing any `git commit`, present a concise summary and diff to the user, and wait for explicit confirmation that they approve the changes.
+3. **Conventional Commits**: Format commit messages following Conventional Commits:
+   - Format: `<type>(<scope>): <lower-case description> (#<issue_number>)`
+   - Allowed types: `feat`, `fix`, `docs`, `chore`, `style`, `refactor`, `ci`, `build`, `test`, `perf`
+   - Allowed scopes: `constructor`, `menu`, `cart`, `grouporder`, `auth`, `ui`, `api`, `db`, `deps`, `config`
+
+### Step 5: Pull Request & Issue Connection
+1. Fetch `origin/dev` and resolve any divergence cleanly.
+2. Push all commits to the remote task branch.
+3. Open a Pull Request targeting the `dev` branch.
+4. In the PR body, link the ZenHub issue (`Closes #<issue_number>` or `Fixes #<issue_number>`), and provide a structured PR description:
+   - **Summary of Changes**
+   - **Connected Work Item**
+   - **Verification & Test Results**
+   - **Screenshots / Visual Notes (for UI)**
+
+### Step 6: PR Checks & Merging Protocol
+1. **Monitor Checks**: Monitor all CI/PR checks until they pass. If any check fails, resolve it on the task branch, push updates, and continue monitoring.
+2. **USER-ONLY MERGE**: The agent must **NEVER** merge a pull request or merge directly into `dev`/`master`. **Only the user can merge pull requests.**
+3. Report to the user that the PR is ready and waiting for their review and merge.
+
+### Step 7: Post-Merge Completion
+1. Once the user confirms the PR is merged into `dev`, move the ZenHub work item to **Done**.
+2. Synchronize local `dev` branch (`git checkout dev && git pull origin dev`) and safely clean up the local task branch.
+
+---
+
+## 5. Engineering Boundaries & Code Standards
+
+- **TypeScript First**: Strict mode enabled. No implicit `any`. All API boundaries validated with `zod`.
+- **Modularity & Separation of Concerns**: Keep UI components, business logic (hooks/stores), and data fetching clearly decoupled.
+- **Secrets & Data Safety**:
+  - Never commit tokens, passwords, database credentials, or real `.env` files.
+  - Never run destructive database drops or resets on unverified environments.
+- **UI & Visual Excellence**:
+  - Polished, responsive, accessible (WAI-ARIA).
+  - High-contrast accessible color palette with signature golden accents (`#f39c12` / `#e67e22`) and dark slate (`#2c3e50`).
+  - Fluid micro-animations for interactive pizza builder layers and cart interactions.
+
+---
+
+## 6. Definition of Done
+
+A work item is complete only when:
+1. All acceptance criteria are met and tested.
+2. Automated and manual validations pass with zero regressions.
+3. Staged changes were reviewed and approved by the user prior to commit.
+4. A Pull Request targeting `dev` is opened with linked issue `#XX`.
+5. All PR CI checks pass.
+6. The user explicitly reviews and merges the Pull Request into `dev`.
+7. The ZenHub work item is moved to **Done**.
