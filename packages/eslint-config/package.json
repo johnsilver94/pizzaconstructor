@@ -1,0 +1,14 @@
+{
+  "name": "@pizzaconstructor/eslint-config",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    "./base.mjs": "./base.mjs",
+    "./next.mjs": "./next.mjs"
+  },
+  "files": [
+    "base.mjs",
+    "next.mjs"
+  ]
+}
