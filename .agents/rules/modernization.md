@@ -1,14 +1,14 @@
-# Agent Operating Rules & Modernization Standards
+# PizzaConstructor — Agent Operating Rules & Standards
 
-## 1. Operating Protocol
-- **Strictly adhere to the workflow in [AGENTS.md](file:///c:/Users/cretu/Desktop/pizzaconstructor/AGENTS.md).**
-- **ZenHub Tasks**: Always create detailed, high-effort work items with complete acceptance criteria and assign them to `johnsilver94` upon starting.
-- **Branches**: Create on GitHub first / push tracking branch immediately before development.
-- **Commits**: Never commit without presenting the diff and getting explicit confirmation from the user.
-- **Pull Requests**: Open PR targeting `dev` with `Closes #<issue_number>`, monitor CI checks, and **never merge automatically**. Merging is strictly reserved for the user.
-- **Move to Done**: Only move the ZenHub issue to Done after the user confirms the PR merge.
+## 1. Operating Protocol & Workflow Contract
+- **Task Quality & Assignment**: Every ZenHub task must be detailed with high effort (Context & Goal, Scope, Acceptance Criteria, Verification steps, Technical Notes), assigned to `johnsilver94`, organized into Epics, and set to `In Progress` before coding.
+- **GitHub-First Branch Creation**: Create remote branch on GitHub first from `origin/dev` before checking out locally (`git push origin origin/dev:refs/heads/feat/issue-<num>-<slug>`).
+- **User Commit Confirmation**: NEVER commit without presenting `git status` and staged diff summary to the user and obtaining explicit confirmation.
+- **Agent Directly Creates PR**: Once changes are committed and pushed, the agent automatically creates the PR targeting `dev` on GitHub with connected issue (`Closes #<num>`) and structured verification report.
+- **CI Checks & User-Only Merge**: The agent must monitor PR/CI checks until green, and **NEVER merge the PR**. Only the user can merge pull requests.
+- **Completion**: Move ZenHub issue to `Done` only after the user confirms the PR merge into `dev`.
 
 ## 2. Technical Standards
-- **TypeScript**: Strict mode enabled. No implicit `any`. All API boundaries validated with `zod`.
+- **TypeScript**: Strict mode enabled. No implicit `any`. All API boundaries validated with `zod` or `TypeBox`.
 - **Styling & UI**: Modern, accessible (WAI-ARIA), mobile-responsive, dynamic micro-interactions.
 - **State & Real-time**: Robust error boundaries, optimistic updates where appropriate, and clean disconnection handling for collaborative sessions.

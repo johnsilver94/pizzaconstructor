@@ -66,54 +66,54 @@ When instructions conflict or required access is missing, stop and report the co
 
 ## 4. Required Work-Item & Development Workflow
 
-Apply this strict workflow to every implementation task in this repository:
+Apply this strict 7-step operating workflow to every implementation task in this repository:
 
-### Step 1: Work Item Creation & Organization (ZenHub)
-1. **Search First**: Before changing code, use the ZenHub MCP to search for existing work items to prevent duplicates.
-2. **Quality Work Items with Effort**: If creating new work items, write detailed, high-effort descriptions including:
-   - **Context & Goal**
-   - **Detailed Scope of Changes**
-   - **Acceptance Criteria (Checklist)**
-   - **Verification / Testing Steps**
+### Step 1: Beautiful Work Items with Effort & User Assignment (ZenHub)
+1. **Search First**: Before changing code, search existing work items in ZenHub to prevent duplicates.
+2. **Quality & High-Effort Descriptions**: Every task must be thoroughly detailed with:
+   - **Context & Goal** (what and why)
+   - **Detailed Scope of Changes** (files and modules affected)
+   - **Acceptance Criteria (Checklist)** (actionable completion items)
+   - **Verification / Testing Steps** (concrete validation commands and flows)
    - **Dependencies / Technical Notes**
-3. **Epics Organization**: Group related tasks under Epics when tackling multi-part features (e.g., Epic: Interactive Pizza Constructor, Epic: Collaborative Group Orders).
-4. **Assign & Move**: Assign the work item to the authenticated user (`johnsilver94`) and move it to **In Progress** in ZenHub before making any file changes.
+3. **Epics Organization**: Multi-task features MUST be grouped under Epics (e.g., Epic 1: Monorepo Foundation, Epic 2: Product Catalog & Menu System, Epic 3: Interactive Visual Pizza Constructor, Epic 4: Collaborative Group Orders & Cart).
+4. **Assign & Move**: Assign the work item to `johnsilver94` and move it to **In Progress** in ZenHub before making any local file changes.
 
-### Step 2: Remote Branch Creation
+### Step 2: GitHub-First Remote Branch Creation
 1. Update remote refs (`git fetch origin`).
-2. Create the branch on GitHub first (or create and push tracking branch immediately from the latest `origin/dev`, which is the canonical base).
+2. **Create on GitHub First**: Create the remote branch on GitHub from latest `origin/dev` (the canonical base) before local checkout:
+   - Command: `git push origin origin/dev:refs/heads/feat/issue-<number>-<slug>` (or via GitHub API).
 3. Branch naming convention: `feat/issue-<number>-<slug>` or `fix/issue-<number>-<slug>`.
-4. Check out the branch locally to begin development.
+4. Check out the remote tracking branch locally: `git checkout feat/issue-<number>-<slug>`.
 
 ### Step 3: Scoped Implementation & Local Validation
 1. Implement only the linked scope. Do not disturb unrelated files or untracked changes.
-2. Run focused validation and automated tests while working.
+2. Run focused validation, type-checks (`turbo check-types`), linting (`turbo lint`), and automated builds (`turbo build`) while working.
 3. For UI changes, verify desktop and mobile responsive states.
 
-### Step 4: User Commit Review & Approval (Mandatory)
-1. **Inspect Staged Diff**: Inspect `git status` and staged diffs. Ensure no unrelated files, credentials, or build artifacts are included.
-2. **Request Confirmation**: Before executing any `git commit`, present a concise summary and diff to the user, and wait for explicit confirmation that they approve the changes.
+### Step 4: Mandatory User Commit Review & Approval
+1. **Inspect Staged Diff**: Run `git status` and inspect staged diffs (`git diff --cached`). Ensure no credentials, unrelated files, or unintended build artifacts are included.
+2. **Request User Confirmation**: Before executing any `git commit`, present a concise summary and diff to the user, and wait for explicit confirmation/approval.
 3. **Conventional Commits**: Format commit messages following Conventional Commits:
    - Format: `<type>(<scope>): <lower-case description> (#<issue_number>)`
    - Allowed types: `feat`, `fix`, `docs`, `chore`, `style`, `refactor`, `ci`, `build`, `test`, `perf`
-   - Allowed scopes: `constructor`, `menu`, `cart`, `grouporder`, `auth`, `ui`, `api`, `db`, `deps`, `config`
+   - Allowed scopes: `monorepo`, `constructor`, `menu`, `catalog`, `cart`, `grouporder`, `auth`, `ui`, `api`, `web`, `db`, `deps`, `config`
 
-### Step 5: Pull Request & Issue Connection
-1. Fetch `origin/dev` and resolve any divergence cleanly.
-2. Push all commits to the remote task branch.
-3. Open a Pull Request targeting the `dev` branch.
-4. In the PR body, link the ZenHub issue (`Closes #<issue_number>` or `Fixes #<issue_number>`), and provide a structured PR description:
+### Step 5: Direct Pull Request Creation Targeting `dev`
+1. Push all approved commits to the remote task branch (`git push origin <branch>`).
+2. **Open PR Directly**: The agent MUST automatically open the Pull Request on GitHub targeting the `dev` branch using the GitHub API/MCP.
+3. In the PR body, link the ZenHub issue (`Closes #<issue_number>` or `Fixes #<issue_number>`), and provide a structured PR description:
    - **Summary of Changes**
    - **Connected Work Item**
    - **Verification & Test Results**
    - **Screenshots / Visual Notes (for UI)**
 
-### Step 6: PR Checks & Merging Protocol
-1. **Monitor Checks**: Monitor all CI/PR checks until they pass. If any check fails, resolve it on the task branch, push updates, and continue monitoring.
-2. **USER-ONLY MERGE**: The agent must **NEVER** merge a pull request or merge directly into `dev`/`master`. **Only the user can merge pull requests.**
-3. Report to the user that the PR is ready and waiting for their review and merge.
+### Step 6: PR Checks Monitoring & User-Only Merge Protocol
+1. **Monitor Checks**: Monitor all CI and PR checks until they pass green. If any check fails, resolve it on the task branch, push updates, and continue monitoring.
+2. **USER-ONLY MERGE**: The agent must **NEVER** merge a pull request or merge directly into `dev` / `master`. **Only the user can merge pull requests.**
+3. Report to the user with the PR link and confirm that checks have passed and the PR is waiting for their review and merge.
 
-### Step 7: Post-Merge Completion
+### Step 7: Post-Merge Completion & Workspace Sync
 1. Once the user confirms the PR is merged into `dev`, move the ZenHub work item to **Done**.
 2. Synchronize local `dev` branch (`git checkout dev && git pull origin dev`) and safely clean up the local task branch.
 
@@ -121,15 +121,15 @@ Apply this strict workflow to every implementation task in this repository:
 
 ## 5. Engineering Boundaries & Code Standards
 
-- **TypeScript First**: Strict mode enabled. No implicit `any`. All API boundaries validated with `zod`.
-- **Modularity & Separation of Concerns**: Keep UI components, business logic (hooks/stores), and data fetching clearly decoupled.
+- **TypeScript First**: Strict mode enabled. No implicit `any`. All API boundaries validated with `zod` or `TypeBox`.
+- **Modularity & Separation of Concerns**: Decouple UI components (`packages/ui`), domain logic (`packages/shared`), and design tokens (`packages/theme`).
 - **Secrets & Data Safety**:
   - Never commit tokens, passwords, database credentials, or real `.env` files.
   - Never run destructive database drops or resets on unverified environments.
 - **UI & Visual Excellence**:
   - Polished, responsive, accessible (WAI-ARIA).
   - High-contrast accessible color palette with signature golden accents (`#f39c12` / `#e67e22`) and dark slate (`#2c3e50`).
-  - Fluid micro-animations for interactive pizza builder layers and cart interactions.
+  - Fluid micro-animations for interactive pizza builder layers and collaborative sessions.
 
 ---
 
@@ -137,9 +137,10 @@ Apply this strict workflow to every implementation task in this repository:
 
 A work item is complete only when:
 1. All acceptance criteria are met and tested.
-2. Automated and manual validations pass with zero regressions.
+2. Automated and manual validations pass with zero regressions (`check-types`, `lint`, `build`).
 3. Staged changes were reviewed and approved by the user prior to commit.
-4. A Pull Request targeting `dev` is opened with linked issue `#XX`.
+4. The remote task branch was pushed and a Pull Request targeting `dev` was opened by the agent with linked issue `Closes #XX`.
 5. All PR CI checks pass.
 6. The user explicitly reviews and merges the Pull Request into `dev`.
-7. The ZenHub work item is moved to **Done**.
+7. The ZenHub work item is moved to **Done** and local `dev` is synchronized.
+
