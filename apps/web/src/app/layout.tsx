@@ -2,6 +2,7 @@ import * as React from "react";
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-[#0f171e] text-[#ecf0f1] antialiased selection:bg-[#f39c12] selection:text-[#0f171e]">
         <Header />
+        <CartDrawer />
         <div className="flex-1 flex flex-col">{children}</div>
         <Footer />
       </body>
