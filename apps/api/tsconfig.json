@@ -1,0 +1,8 @@
+{
+  "extends": "@pizzaconstructor/typescript-config/elysia.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"]
+}
