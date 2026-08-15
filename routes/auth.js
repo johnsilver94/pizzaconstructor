@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcryptjs');
 
 const models = require('../models');
 
@@ -61,7 +61,7 @@ router.post('/register', (req, res) => {
       login
     }).then(user => {
       if (!user) {
-        bcrypt.hash(password, null, null, (err, hash) => {
+        bcrypt.hash(password, 10, (err, hash) => {
           models.User.create({
             login,
             email,

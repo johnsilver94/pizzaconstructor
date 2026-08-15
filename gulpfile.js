@@ -1,34 +1,50 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
-const cssnano = require('gulp-cssnano');
+const cleanCSS = require('gulp-clean-css');
 const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
-const uglify = require('gulp-uglifyjs');
+const terser = require('gulp-terser');
 
 function scss() {
   return gulp
     .src('dev/scss/**/*.scss')
     .pipe(plumber())
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(
-      autoprefixer(['last 15 versions', '>1%', 'ie 8', 'ie 7'], {
+      autoprefixer({
         cascade: true
       })
     )
-    .pipe(cssnano())
+    .pipe(cleanCSS())
     .pipe(gulp.dest('public/css'));
 }
 
 function scripts() {
-  gulp
+  return gulp
     .src(['dev/js/**/*.js'])
+    .pipe(plumber())
     .pipe(concat('scripts.js'))
-    .pipe(uglify())
+    .pipe(terser())
     .pipe(gulp.dest('public/js'));
 }
+
 function watch() {
   gulp.watch('dev/scss/**/*.scss', scss);
   gulp.watch('dev/js/**/*.js', scripts);
 }
-gulp.task('default', watch);
+
+const build = gulp.parallel(scss, scripts);
+
+gulp.task('scss', scss);
+gulp.task('scripts', scripts);
+gulp.task('build', build);
+gulp.task('default', gulp.series(build, watch));
+
+module.exports = {
+  scss,
+  scripts,
+  build,
+  watch,
+  default: gulp.series(build, watch)
+};
