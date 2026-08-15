@@ -14,6 +14,9 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
+  "dependencies": {
+    "@pizzaconstructor/shared": "workspace:*"
+  },
   "devDependencies": {
     "@pizzaconstructor/theme": "workspace:*",
     "@pizzaconstructor/typescript-config": "workspace:*",

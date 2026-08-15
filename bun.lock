@@ -115,6 +115,9 @@
     "packages/ui": {
       "name": "@pizzaconstructor/ui",
       "version": "0.1.0",
+      "dependencies": {
+        "@pizzaconstructor/shared": "workspace:*",
+      },
       "devDependencies": {
         "@pizzaconstructor/eslint-config": "workspace:*",
         "@pizzaconstructor/theme": "workspace:*",
