@@ -3,18 +3,22 @@ const express = require('express');
 const router = express.Router();
 const models = require('../models');
 
-async function home(req, res) {
-  const id = req.session.userId;
-  const login = req.session.userLogin;
-  const ingrouporder = req.session.ingrouporder;
-  const avatar = req.session.avatar;
+async function renderMenu(req, res, next) {
+  const id = req.session ? req.session.userId : null;
+  const login = req.session ? req.session.userLogin : null;
+  const ingrouporder = req.session ? req.session.ingrouporder : false;
+  const avatar = req.session ? req.session.avatar : '/img/userimg.png';
+
+  const category = req.params.category || req.query.category || 'pizza';
 
   try {
-    let products = await models.Product.find({
-      category: 'pizza'
-    });
+    let products = await models.Product.find({ category });
+    if (!products || products.length === 0) {
+      products = await models.Product.find({});
+    }
     res.render('pages/menu', {
       products,
+      category,
       user: {
         id,
         login,
@@ -23,13 +27,12 @@ async function home(req, res) {
       }
     });
   } catch (error) {
-    throw new Error('Server Error');
+    next(error);
   }
 }
 
-//routers
-router.get('/', (req, res) => {
-  home(req, res);
-});
+// routes
+router.get('/', renderMenu);
+router.get('/:category', renderMenu);
 
 module.exports = router;

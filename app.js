@@ -53,6 +53,16 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(staticAsset(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+  if (req.assetFingerprint) {
+    res.locals.assetFingerprint = req.assetFingerprint;
+  } else if (!res.locals.assetFingerprint) {
+    res.locals.assetFingerprint = file => file;
+  }
+  next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, config.DESTINATION)));
 

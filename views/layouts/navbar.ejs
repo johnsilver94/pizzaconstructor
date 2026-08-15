@@ -70,8 +70,8 @@
   </div>
 </nav>      
 <% if(!user.id && !user.login) { %>
-<% include ../layouts/navbar_layouts/register.ejs %>
-<% include ../layouts/navbar_layouts/login.ejs %>     
+<%- include('./navbar_layouts/register') %>
+<%- include('./navbar_layouts/login') %>     
 <% } else { %>
-<% include ../layouts/navbar_layouts/basket.ejs %>
+<%- include('./navbar_layouts/basket') %>
 <% } %>
