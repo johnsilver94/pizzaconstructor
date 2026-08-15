@@ -4,6 +4,8 @@ import { cors } from "@elysiajs/cors";
 import { healthRoute } from "./routes/health";
 import { productsRoutes, categoriesRoutes } from "./routes/products";
 import { ingredientsRoutes } from "./routes/ingredients";
+import { groupOrderRoutes } from "./routes/groupOrders";
+import { groupOrderWsRoutes } from "./routes/groupOrderWs";
 import { connectDB } from "./db/connection";
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3001;
@@ -50,6 +52,8 @@ export const app = new Elysia()
   .use(productsRoutes)
   .use(categoriesRoutes)
   .use(ingredientsRoutes)
+  .use(groupOrderRoutes)
+  .use(groupOrderWsRoutes)
   .get("/", () => ({
     message: "🍕 Welcome to PizzaConstructor API Service",
     documentation: "/swagger",

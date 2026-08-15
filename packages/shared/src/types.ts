@@ -55,14 +55,66 @@ export interface CustomPizzaRecipe {
   allergens: string[];
 }
 
-export interface GroupOrderSession {
+// ---------------------------------------------
+// Group Orders Domain Models
+// ---------------------------------------------
+export type GroupOrderStatus = "open" | "locked" | "submitted" | "completed" | "cancelled";
+
+export interface GroupParticipant {
   id: string;
-  code: string;
-  hostName: string;
-  hostUserId?: string;
+  name: string;
+  avatar?: string;
+  isHost: boolean;
+  joinedAt: string;
+}
+
+export interface GroupOrderItem {
+  id: string;
+  participantId: string;
+  participantName: string;
+  name: string;
+  sizeLabel: string;
+  unitPrice: number;
+  quantity: number;
+  weightG: number;
+  allergens: string[];
+  customDetails?: {
+    size: PizzaSizeId;
+    dough: DoughTypeId;
+    sauceNames: string[];
+    toppingNames: string[];
+  };
+  createdAt: string;
+}
+
+export interface GroupOrderRoom {
+  id: string; // URL slug e.g. "team-lunch-847" or uuid
   title: string;
-  deadline: string; // ISO String
-  status: "open" | "locked" | "submitted" | "completed" | "cancelled";
-  participantsCount: number;
-  totalAmount: number;
+  hostId: string;
+  hostName: string;
+  hostToken: string; // Secret token for host controls
+  status: GroupOrderStatus;
+  deadlineIso?: string;
+  deliveryAddress?: string;
+  maxParticipants?: number;
+  participants: GroupParticipant[];
+  items: GroupOrderItem[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type GroupWsMessageType =
+  | "JOIN_ROOM"
+  | "LEAVE_ROOM"
+  | "ADD_ITEM"
+  | "REMOVE_ITEM"
+  | "SET_STATUS"
+  | "ROOM_SYNC"
+  | "ERROR";
+
+export interface GroupWsMessage {
+  type: GroupWsMessageType;
+  payload?: unknown;
+  roomId?: string;
+  participantId?: string;
 }
