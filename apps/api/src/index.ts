@@ -2,8 +2,16 @@ import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 import { cors } from "@elysiajs/cors";
 import { healthRoute } from "./routes/health";
+import { productsRoutes, categoriesRoutes } from "./routes/products";
+import { ingredientsRoutes } from "./routes/ingredients";
+import { connectDB } from "./db/connection";
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3001;
+
+// Initialize background database connection (non-blocking)
+connectDB().catch(() => {
+  console.log("ℹ️ API running with resilient in-memory catalog fallback.");
+});
 
 export const app = new Elysia()
   .use(
@@ -33,6 +41,15 @@ export const app = new Elysia()
     })
   )
   .use(healthRoute)
+  .group("/api", (api) =>
+    api
+      .use(productsRoutes)
+      .use(categoriesRoutes)
+      .use(ingredientsRoutes)
+  )
+  .use(productsRoutes)
+  .use(categoriesRoutes)
+  .use(ingredientsRoutes)
   .get("/", () => ({
     message: "🍕 Welcome to PizzaConstructor API Service",
     documentation: "/swagger",
