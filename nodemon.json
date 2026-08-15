@@ -3,8 +3,9 @@
   "env": {
     "NODE_ENV": "development",
     "PORT": 3000,
-    "MONGO_URL": "mongodb://@ds026658.mlab.com:26658/pizzaconstructor"
+    "MONGO_URL": "mongodb://127.0.0.1:27017/pizzaconstructor",
+    "SESSION_SECRET": "pizzaconstructor_dev_secret_key"
   },
   "ext": ".js,.json",
-  "watch": "./"
+  "watch": ["app.js", "config.js", "mocks.js", "models", "routes", "views"]
 }

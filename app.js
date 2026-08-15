@@ -3,57 +3,51 @@ const bodyParser = require('body-parser');
 const staticAsset = require('static-asset');
 const path = require('path');
 const session = require('express-session');
-
-//MongoDB
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
+const mongoose = require('mongoose');
 
 const config = require('./config');
 const routes = require('./routes');
-const mongoose = require('mongoose');
-//Data Generations
-// const mocks = require('./mocks');
-
-mongoose.Promise = global.Promise;
-mongoose.set('debug', config.IS_PRODUCTION);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
+const mocks = require('./mocks');
 
 mongoose.connection
-  .on('error', error => console.log(error))
-  .on('close', () => console.log * 'Database connection closed.')
+  .on('error', error => console.error('MongoDB connection error:', error))
+  .on('close', () => console.log('Database connection closed.'))
   .once('open', () => {
     const info = mongoose.connections[0];
-    console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
-    // mocks();
+    console.log(`Connected to MongoDB at ${info.host}:${info.port}/${info.name}`);
+    mocks();
   });
 
-mongoose.connect(
-  config.MONGO_URL,
-  {
-    useNewUrlParser: true,
-    auth: {
-      user: config.user,
-      password: config.password
-    }
-  }
-);
+const connectOptions = {};
+if (config.user && config.password) {
+  connectOptions.auth = {
+    username: config.user,
+    password: config.password
+  };
+}
 
-//Express
+mongoose.connect(config.MONGO_URL, connectOptions).catch(err => {
+  console.error('Initial MongoDB connection error:', err.message);
+});
+
+// Express
 const app = express();
 
-//sessions
+// Sessions
 app.use(
   session({
     secret: config.SESSION_SECRET,
-    resave: true,
+    resave: false,
     saveUninitialized: false,
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection
+    store: MongoStore.create({
+      mongoUrl: config.MONGO_URL,
+      ttl: 14 * 24 * 60 * 60
     })
   })
 );
 
-//Sets and uses
+// Sets and uses
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -62,11 +56,10 @@ app.use(staticAsset(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, config.DESTINATION)));
 
-//jQuery
+// jQuery
 app.use(express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
 
-//Routes
-// app.use('/', routes.home);
+// Routes
 app.use('/', routes.home);
 app.use('/menu', routes.menu);
 app.use('/api/auth', routes.auth);
@@ -89,5 +82,5 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(config.PORT, () =>
-  console.log(`Example app listening on port ${config.PORT}!`)
+  console.log(`PizzaConstructor app listening on port ${config.PORT}!`)
 );
