@@ -11,8 +11,12 @@
     "lint": "eslint \"src/**/*.ts*\""
   },
   "dependencies": {
+    "@elysiajs/cors": "1.1.1",
+    "@elysiajs/swagger": "1.1.5",
     "@pizzaconstructor/shared": "workspace:*",
-    "@pizzaconstructor/theme": "workspace:*"
+    "@pizzaconstructor/theme": "workspace:*",
+    "@sinclair/typebox": "0.32.34",
+    "elysia": "1.1.24"
   },
   "devDependencies": {
     "@pizzaconstructor/typescript-config": "workspace:*",
