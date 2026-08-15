@@ -5,6 +5,8 @@ import { ShoppingBag, Users, RotateCcw, AlertTriangle, Sparkles, Scale, Flame } 
 import { Button } from "@pizzaconstructor/ui";
 import type { CalculatedPizzaMetrics } from "@pizzaconstructor/shared";
 
+import { useCartStore } from "@/store/useCartStore";
+
 interface LiveSummaryPanelProps {
   metrics: CalculatedPizzaMetrics;
   recipeName: string;
@@ -24,6 +26,7 @@ export const LiveSummaryPanel: React.FC<LiveSummaryPanelProps> = ({
 
   const handleAdd = () => {
     onAddToCart();
+    useCartStore.getState().openDrawer();
     setAddedAnimation(true);
     setTimeout(() => setAddedAnimation(false), 1600);
   };

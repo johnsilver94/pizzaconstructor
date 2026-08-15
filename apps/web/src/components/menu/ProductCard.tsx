@@ -40,6 +40,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     } else {
       addCatalogItem(product, selectedOption, quantity);
     }
+    useCartStore.getState().openDrawer();
     setAddedAnimation(true);
     setTimeout(() => setAddedAnimation(false), 1500);
   };
