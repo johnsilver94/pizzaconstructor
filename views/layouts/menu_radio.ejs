@@ -1,37 +1,32 @@
 <div class="menu">
   <div class="category">
-   <input type="radio" name="category" id="pizza" value="pizza" checked>
-   <label for="pizza">
-     <span>
-     </span>
-   </label>
+    <input type="radio" name="category" id="pizza" value="pizza" <%= (typeof category !== 'undefined' && category === 'pizza') || (typeof category === 'undefined') ? 'checked' : '' %>>
+    <label for="pizza">
+      <span></span>
+    </label>
   </div>
   <div class="category">
-   <input type="radio" name="category" id="salad" value="salad">
-   <label for="salad">
-     <span>
-     </span>
-   </label>
+    <input type="radio" name="category" id="salad" value="salad" <%= typeof category !== 'undefined' && category === 'salad' ? 'checked' : '' %>>
+    <label for="salad">
+      <span></span>
+    </label>
   </div>
   <div class="category">
-   <input type="radio" name="category" id="desert" value="desert">
-   <label for="desert">
-     <span>
-     </span>
-   </label>
+    <input type="radio" name="category" id="desert" value="desert" <%= typeof category !== 'undefined' && category === 'desert' ? 'checked' : '' %>>
+    <label for="desert">
+      <span></span>
+    </label>
   </div>
   <div class="category">
-   <input type="radio" name="category" id="beverages" value="beverages">
-   <label for="beverages">
-     <span>
-     </span>
-   </label>
+    <input type="radio" name="category" id="beverages" value="beverages" <%= typeof category !== 'undefined' && category === 'beverages' ? 'checked' : '' %>>
+    <label for="beverages">
+      <span></span>
+    </label>
   </div>
   <div class="category">
-   <input type="radio" name="category" id="vegan" value="vegan">
-   <label for="vegan">
-     <span>
-     </span>
-   </label>
- </div>
+    <input type="radio" name="category" id="vegan" value="vegan" <%= typeof category !== 'undefined' && category === 'vegan' ? 'checked' : '' %>>
+    <label for="vegan">
+      <span></span>
+    </label>
+  </div>
 </div>
