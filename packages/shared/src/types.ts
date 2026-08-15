@@ -1,5 +1,19 @@
+export type CategorySlug = "pizza" | "salad" | "desert" | "beverages" | "vegan";
+
 export type PizzaSizeId = "small" | "medium" | "large";
 export type DoughTypeId = "traditional" | "thin" | "cheese_crust" | "gluten_free";
+
+export interface Allergen {
+  id: string;
+  name: string;
+  badgeColor?: string;
+}
+
+export interface SizePriceOption {
+  size: string;
+  price: number;
+  weightG?: number;
+}
 
 export interface Ingredient {
   id: string;
@@ -11,6 +25,22 @@ export interface Ingredient {
   allergens: string[];
   colorHex?: string;
   icon?: string;
+}
+
+export interface Product {
+  id?: string;
+  _id?: string;
+  name: string;
+  category: CategorySlug;
+  description?: string;
+  image?: string;
+  ingredients: { name: string }[];
+  allergens: { name: string }[];
+  sizePrices: SizePriceOption[];
+  isAvailable?: boolean;
+  createdBy?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface CustomPizzaRecipe {

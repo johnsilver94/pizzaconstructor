@@ -12,6 +12,7 @@
     "dev": "bun --watch src/index.ts",
     "build": "bun build src/index.ts --outdir dist --target bun",
     "start": "bun run dist/index.js",
+    "seed": "bun run src/db/seed.ts",
     "check-types": "tsc --noEmit",
     "lint": "eslint \"src/**/*.ts*\""
   },
@@ -21,7 +22,8 @@
     "@pizzaconstructor/shared": "workspace:*",
     "@pizzaconstructor/theme": "workspace:*",
     "@sinclair/typebox": "0.32.34",
-    "elysia": "1.1.24"
+    "elysia": "1.1.24",
+    "mongoose": "^8.12.1"
   },
   "devDependencies": {
     "@pizzaconstructor/typescript-config": "workspace:*",
