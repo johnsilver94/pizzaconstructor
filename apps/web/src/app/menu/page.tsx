@@ -8,9 +8,12 @@ import { ProductCard } from "@/components/menu/ProductCard";
 import { api } from "@/lib/eden";
 import type { Product, SizePriceOption } from "@pizzaconstructor/shared";
 
+import { useCartStore } from "@/store/useCartStore";
+
 function MenuContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const addCatalogItem = useCartStore((state) => state.addCatalogItem);
 
   const initialCategory = searchParams.get("category") || "pizza";
   const [activeCategory, setActiveCategory] = React.useState<string>(initialCategory);
@@ -77,7 +80,7 @@ function MenuContent() {
   };
 
   const handleAddToCart = (product: Product, size: SizePriceOption, qty: number) => {
-    console.log("Added to cart:", { product: product.name, size: size.size, price: size.price, qty });
+    addCatalogItem(product, size, qty);
   };
 
   return (

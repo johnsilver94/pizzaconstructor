@@ -209,28 +209,29 @@ export const PIZZA_CONSTRUCTOR_INGREDIENTS: Ingredient[] = [
   },
 ];
 
-export const ingredientsRoutes = new Elysia({ prefix: "/ingredients" })
-  .get(
-    "/",
-    () => {
-      const grouped = {
-        sauce: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "sauce"),
-        cheese: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "cheese"),
-        meat: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "meat"),
-        vegetable: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "vegetable"),
-        extra: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "extra"),
-      };
+const getIngredientsHandler = () => {
+  const grouped = {
+    sauce: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "sauce"),
+    cheese: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "cheese"),
+    meat: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "meat"),
+    vegetable: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "vegetable"),
+    extra: PIZZA_CONSTRUCTOR_INGREDIENTS.filter((i) => i.category === "extra"),
+  };
 
-      return {
-        ingredients: PIZZA_CONSTRUCTOR_INGREDIENTS,
-        grouped,
-        total: PIZZA_CONSTRUCTOR_INGREDIENTS.length,
-      };
-    },
-    {
-      detail: {
-        summary: "Get all customizable ingredients for interactive pizza constructor",
-        tags: ["Constructor"],
-      },
-    }
-  );
+  return {
+    ingredients: PIZZA_CONSTRUCTOR_INGREDIENTS,
+    grouped,
+    total: PIZZA_CONSTRUCTOR_INGREDIENTS.length,
+  };
+};
+
+const ingredientsSchema = {
+  detail: {
+    summary: "Get all customizable ingredients for interactive pizza constructor",
+    tags: ["Constructor"],
+  },
+};
+
+export const ingredientsRoutes = new Elysia({ prefix: "/ingredients" })
+  .get("/", getIngredientsHandler, ingredientsSchema)
+  .get("/index", getIngredientsHandler, ingredientsSchema);

@@ -59,89 +59,123 @@ function mapDocToProduct(doc: Record<string, unknown>): Product {
   };
 }
 
-export const productsRoutes = new Elysia({ prefix: "/products" })
-  // GET /products
-  .get(
-    "/",
-    async ({ query }) => {
-      const { category, search, limit = 50, skip = 0 } = query;
+const getProductsHandler = async ({ query }: { query: { category?: string; search?: string; limit?: number; skip?: number } }) => {
+  const { category, search, limit = 50, skip = 0 } = query;
 
-      try {
-        const filter: Record<string, unknown> = { isAvailable: true };
+  try {
+    const filter: Record<string, unknown> = { isAvailable: true };
 
-        if (category && category !== "all") {
-          filter.category = category;
-        }
+    if (category && category !== "all") {
+      filter.category = category;
+    }
 
-        if (search && search.trim().length > 0) {
-          filter.name = { $regex: search.trim(), $options: "i" };
-        }
+    if (search && search.trim().length > 0) {
+      filter.name = { $regex: search.trim(), $options: "i" };
+    }
 
-        const items = await ProductModel.find(filter)
-          .skip(Number(skip))
-          .limit(Number(limit))
-          .lean();
+    const items = await ProductModel.find(filter)
+      .skip(Number(skip))
+      .limit(Number(limit))
+      .lean();
 
-        if (items && items.length > 0) {
-          const total = await ProductModel.countDocuments(filter);
-          return {
-            items: items.map((doc) => mapDocToProduct(doc as unknown as Record<string, unknown>)),
-            total,
-            category: category || "all",
-          };
-        }
-      } catch {
-        // Fallback to in-memory seed data if MongoDB is unreachable
-      }
-
-      // In-Memory Fallback
-      let fallbackItems: Product[] = seedCatalogData.map((item, idx) => ({
-        _id: `seed-product-${idx + 1}`,
-        id: `seed-product-${idx + 1}`,
-        ...item,
-        isAvailable: true,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      }));
-
-      if (category && category !== "all") {
-        fallbackItems = fallbackItems.filter((i) => i.category === category);
-      }
-
-      if (search && search.trim().length > 0) {
-        const term = search.trim().toLowerCase();
-        fallbackItems = fallbackItems.filter(
-          (i) =>
-            i.name.toLowerCase().includes(term) ||
-            (i.description && i.description.toLowerCase().includes(term)) ||
-            i.ingredients.some((ing) => ing.name.toLowerCase().includes(term))
-        );
-      }
-
-      const total = fallbackItems.length;
-      const paginated = fallbackItems.slice(Number(skip), Number(skip) + Number(limit));
-
+    if (items && items.length > 0) {
+      const total = await ProductModel.countDocuments(filter);
       return {
-        items: paginated,
+        items: items.map((doc) => mapDocToProduct(doc as unknown as Record<string, unknown>)),
         total,
         category: category || "all",
       };
-    },
-    {
-      query: t.Object({
-        category: t.Optional(t.String()),
-        search: t.Optional(t.String()),
-        limit: t.Optional(t.Numeric()),
-        skip: t.Optional(t.Numeric()),
-      }),
-      detail: {
-        summary: "Get products catalog with optional category filtering and search",
-        tags: ["Catalog"],
-      },
     }
-  )
+  } catch {
+    // Fallback to in-memory seed data if MongoDB is unreachable
+  }
 
-  // GET /products/:id
+  // In-Memory Fallback
+  let fallbackItems: Product[] = seedCatalogData.map((item, idx) => ({
+    _id: `seed-product-${idx + 1}`,
+    id: `seed-product-${idx + 1}`,
+    ...item,
+    isAvailable: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  }));
+
+  if (category && category !== "all") {
+    fallbackItems = fallbackItems.filter((i) => i.category === category);
+  }
+
+  if (search && search.trim().length > 0) {
+    const term = search.trim().toLowerCase();
+    fallbackItems = fallbackItems.filter(
+      (i) =>
+        i.name.toLowerCase().includes(term) ||
+        (i.description && i.description.toLowerCase().includes(term)) ||
+        i.ingredients.some((ing) => ing.name.toLowerCase().includes(term))
+    );
+  }
+
+  const total = fallbackItems.length;
+  const paginated = fallbackItems.slice(Number(skip), Number(skip) + Number(limit));
+
+  return {
+    items: paginated,
+    total,
+    category: category || "all",
+  };
+};
+
+const productsQuerySchema = {
+  query: t.Object({
+    category: t.Optional(t.String()),
+    search: t.Optional(t.String()),
+    limit: t.Optional(t.Numeric()),
+    skip: t.Optional(t.Numeric()),
+  }),
+  detail: {
+    summary: "Get products catalog with optional category filtering and search",
+    tags: ["Catalog"],
+  },
+};
+
+const getCategoriesHandler = async () => {
+  const counts: Record<string, number> = {};
+
+  try {
+    const aggr = await ProductModel.aggregate([
+      { $match: { isAvailable: true } },
+      { $group: { _id: "$category", count: { $sum: 1 } } },
+    ]);
+    for (const item of aggr) {
+      counts[item._id] = item.count;
+    }
+  } catch {
+    // Fallback
+    for (const item of seedCatalogData) {
+      counts[item.category] = (counts[item.category] || 0) + 1;
+    }
+  }
+
+  const categories = CATEGORY_DEFINITIONS.map((def) => ({
+    ...def,
+    count: counts[def.slug] || 0,
+  }));
+
+  return {
+    categories,
+    totalCategories: categories.length,
+  };
+};
+
+const categoriesSchema = {
+  detail: {
+    summary: "List all product categories with item counts and icon assets",
+    tags: ["Catalog"],
+  },
+};
+
+export const productsRoutes = new Elysia({ prefix: "/products" })
+  .get("/", getProductsHandler, productsQuerySchema)
+  .get("/index", getProductsHandler, productsQuerySchema)
   .get(
     "/:id",
     async ({ params: { id }, set }) => {
@@ -186,41 +220,5 @@ export const productsRoutes = new Elysia({ prefix: "/products" })
   );
 
 export const categoriesRoutes = new Elysia({ prefix: "/categories" })
-  // GET /categories
-  .get(
-    "/",
-    async () => {
-      const counts: Record<string, number> = {};
-
-      try {
-        const aggr = await ProductModel.aggregate([
-          { $match: { isAvailable: true } },
-          { $group: { _id: "$category", count: { $sum: 1 } } },
-        ]);
-        for (const item of aggr) {
-          counts[item._id] = item.count;
-        }
-      } catch {
-        // Fallback
-        for (const item of seedCatalogData) {
-          counts[item.category] = (counts[item.category] || 0) + 1;
-        }
-      }
-
-      const categories = CATEGORY_DEFINITIONS.map((def) => ({
-        ...def,
-        count: counts[def.slug] || 0,
-      }));
-
-      return {
-        categories,
-        totalCategories: categories.length,
-      };
-    },
-    {
-      detail: {
-        summary: "List all product categories with item counts and icon assets",
-        tags: ["Catalog"],
-      },
-    }
-  );
+  .get("/", getCategoriesHandler, categoriesSchema)
+  .get("/index", getCategoriesHandler, categoriesSchema);
